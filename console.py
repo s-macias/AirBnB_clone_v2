@@ -19,16 +19,16 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
 
     classes = {
-               'BaseModel': BaseModel, 'User': User, 'Place': Place,
-               'State': State, 'City': City, 'Amenity': Amenity,
-               'Review': Review
-              }
+        'BaseModel': BaseModel, 'User': User, 'Place': Place,
+        'State': State, 'City': City, 'Amenity': Amenity,
+        'Review': Review
+        }
     dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
     types = {
-             'number_rooms': int, 'number_bathrooms': int,
-             'max_guest': int, 'price_by_night': int,
-             'latitude': float, 'longitude': float
-            }
+        'number_rooms': int, 'number_bathrooms': int,
+        'max_guest': int, 'price_by_night': int,
+        'latitude': float, 'longitude': float
+        }
 
     def preloop(self):
         """Prints if isatty is false"""
@@ -114,17 +114,36 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
-        """ Create an object of any class"""
-        if not args:
+        """Create an object of any class"""
+        arg_list = args.split()
+        my_dict = {}
+        if len(args) == 0:
             print("** class name missing **")
             return
-        elif args not in HBNBCommand.classes:
+        if arg_list[0] in HBNBCommand.classes:
+            for element in arg_list:
+                if "=" in element:
+                    key = element.split("=")[0]
+                    value = element.split("=")[1]
+                    if "\"" in value:
+                        value = value[1:-1]
+                        if '_' in value:
+                            value = value.replace('_', ' ')
+                    elif "." in value:
+                        value = float(value)
+                    else:
+                        value = int(value)
+                    my_dict[key] = value
+
+            obj = HBNBCommand.classes[arg_list[0]]()
+            for key, value in my_dict.items():
+                if hasattr(obj, key):
+                    setattr(obj, key, value)
+            storage.save()
+            print("{}".format(obj.id))
+
+        else:
             print("** class doesn't exist **")
-            return
-        new_instance = HBNBCommand.classes[args]()
-        storage.save()
-        print(new_instance.id)
-        storage.save()
 
     def help_create(self):
         """ Help information for the create method """
