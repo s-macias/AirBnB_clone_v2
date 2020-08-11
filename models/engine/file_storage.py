@@ -14,7 +14,7 @@ class FileStorage:
             return FileStorage.__objects
         else:
             cls_dict = {}
-            
+
             for key, value in FileStorage.__objects.items():
                 if cls.__name__ == value.__class__.__name__:
                     cls_dict[key] = value
@@ -44,10 +44,10 @@ class FileStorage:
         from models.review import Review
 
         classes = {
-                    'BaseModel': BaseModel, 'User': User, 'Place': Place,
-                    'State': State, 'City': City, 'Amenity': Amenity,
-                    'Review': Review
-                  }
+            'BaseModel': BaseModel, 'User': User, 'Place': Place,
+            'State': State, 'City': City, 'Amenity': Amenity,
+            'Review': Review
+            }
         try:
             temp = {}
             with open(FileStorage.__file_path, 'r') as f:
@@ -55,7 +55,7 @@ class FileStorage:
                 for key, val in temp.items():
                         self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
-            pass    
+            pass
 
     def delete(self, obj=None):
         """delete obj (called in to_destroy)"""
