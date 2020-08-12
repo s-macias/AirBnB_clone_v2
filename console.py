@@ -139,7 +139,7 @@ class HBNBCommand(cmd.Cmd):
             for key, value in my_dict.items():
                 if hasattr(obj, key):
                     setattr(obj, key, value)
-            storage.save()
+            obj.save()
             print("{}".format(obj.id))
         else:
             print("** class doesn't exist **")
@@ -333,7 +333,6 @@ class HBNBCommand(cmd.Cmd):
         """ Help information for the update class """
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
-
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
