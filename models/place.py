@@ -28,8 +28,8 @@ class Place(BaseModel, Base):
     def reviews(self):
         """Getter for Review instances"""
         list_review = []
-        dict_review = models.storage.all(Review)
-        for key, review in dict_review.items():
+        dict_review = models.storage.all('Review')
+        for review in dict_review.values():
             if review.place_id == self.id:
                 list_review.append(review)
         return list_review
