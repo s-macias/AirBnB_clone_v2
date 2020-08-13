@@ -3,6 +3,7 @@
 import models
 from os import getenv
 from models.review import Review
+from models.amenity import Amenity
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
 from sqlalchemy.ext.declarative import declarative_base
@@ -39,7 +40,7 @@ class Place(BaseModel, Base):
     def reviews(self):
         """Getter for Review instances"""
         list_review = []
-        dict_review = models.storage.all('Review')
+        dict_review = models.storage.all(Review)
         for review in dict_review.values():
             if review.place_id == self.id:
                 list_review.append(review)
@@ -49,7 +50,7 @@ class Place(BaseModel, Base):
     def amenities(self):
         """Getter for Amenity instances"""
         list_amenities = []
-        dict_amenities = models.storage.all('Amenity')
+        dict_amenities = models.storage.all(Amenity)
         for amenity in dict_amenities.values():
             if amenity.id in self.amenity_ids:
                 list_amenities.append(amenity)
