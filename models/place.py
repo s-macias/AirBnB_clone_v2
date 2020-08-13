@@ -5,7 +5,6 @@ from os import getenv
 from models.base_model import BaseModel, Base
 from models.review import Review
 from sqlalchemy.orm import relationship
-#from models.city import City
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 
 
@@ -25,13 +24,12 @@ class Place(BaseModel, Base):
     amenity_ids = []
     reviews = relationship('Review', cascade='all, delete', backref='place')
 
-    if getenv('HBNB_TYPE_STORAGE') != "db":
-        @property
-        def reviews(self):
-            """Getter for Review instances"""
-            list_review = []
-            dict_review = models.storage.all(Review)
-            for key, review in dict_review.items():
-                if review.place_id == self.id:
-                    list_review.append(review)
-            return list_review
+    @property
+    def reviews(self):
+        """Getter for Review instances"""
+        list_review = []
+        dict_review = models.storage.all(Review)
+        for key, review in dict_review.items():
+            if review.place_id == self.id:
+                list_review.append(review)
+        return list_review
