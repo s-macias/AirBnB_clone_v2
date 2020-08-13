@@ -140,3 +140,70 @@ Usage: <class_name>.update(<_id>, <dictionary>)
 (hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'name': 'Fred the Frog', 'age': 9, 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
 ```
 <br>
+
+## AirBnB Clone - MySQL
+
+This is the second part of the project which maps the classes created in Python
+to a MySQL databse using SQLAlchemy.
+
+### Learning Objectives:
+
+What is Unit testing and how to implement it in a large project
+What is *args and how to use it
+What is **kwargs and how to use it
+How to handle named arguments in a function
+How to create a MySQL database
+How to create a MySQL user and grant it privileges
+What ORM means
+How to map a Python Class to a MySQL table
+How to handle 2 different storage engines with the same codebase
+How to use environment variables
+
+## Tasks
+
+### 0. Fork me if you can! 
+or this project you will fork this codebase:
+
+update the repository name to AirBnB_clone_v2
+update the README.md with your information but don’t delete the initial authors
+
+### 1. Bug free! 
+This codebase contains many test cases. Some are missing, but the ones included cover the basic functionality of the program.
+All your unittests must pass without any errors at anytime in this project, with each storage engine!. Same for PEP8!
+
+### 2. Console improvements
+Update the def do_create(self, arg): function of your command interpreter (console.py) to allow for object creation with given parameters
+
+### 3. MySQL setup development
+Write a script that prepares a MySQL server for the project
+
+### 4. MySQL setup test
+Write a script that prepares a MySQL server for the project
+
+### 5. Delete object 
+Update FileStorage: (models/engine/file_storage.py)
+
+### 6. DBStorage - States and Cities 
+It’s time to change your storage engine and use SQLAlchemy.
+Update BaseModel: (models/base_model.py)
+Update City: (models/city.py)
+Update State: (models/state.py)
+New engine DBStorage: (models/engine/db_storage.py)
+Update __init__.py: (models/__init__.py)
+
+### 7. DBStorage - User
+Update User: (models/user.py)
+
+### 8. DBStorage - Place
+Update Place: (models/place.py)
+Update User: (models/user.py)
+Update City: (models/city.py)
+
+### 9. DBStorage - Review
+Update Review: (models/review.py)
+Update User: (models/user.py)
+Update Place: (models/place.py)
+
+### 10. DBStorage - Amenity... and BOOM! 
+Update Amenity: (models/amenity.py)
+Update Place: (models/place.py)
