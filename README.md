@@ -207,3 +207,8 @@ Update Place: (models/place.py)
 ### 10. DBStorage - Amenity... and BOOM! 
 Update Amenity: (models/amenity.py)
 Update Place: (models/place.py)
+
+Contributors Part 2
+
+Sandra Macias
+David Hincapie Giraldo
