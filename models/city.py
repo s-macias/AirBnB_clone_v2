@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ City Module for HBNB project """
 from models.place import Place
-from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
+from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String, ForeignKey
 
 
