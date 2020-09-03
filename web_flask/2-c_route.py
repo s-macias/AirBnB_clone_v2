@@ -21,7 +21,8 @@ def hello_1():
 @app.route('/c/<text>', strict_slashes=False)
 def hello_2(text):
     """ displays C followed by the variable text """
-    return str(text).replace('_', ' ')
+    text = "C " + text.replace('_', ' ')
+    return text
 
 
 if __name__ == '__main__':
