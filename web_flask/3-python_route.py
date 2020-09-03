@@ -25,6 +25,7 @@ def display_C(text):
     return text
 
 
+@app.route('/python/', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def display_Python(text='is_cool'):
     """ displays python followed by the variable text """
